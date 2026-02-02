@@ -1,0 +1,14 @@
+[package]
+name = "phantom-streams-encrypted-ixs"
+version = "0.1.0"
+edition = "2021"
+description = "Phantom Streams - Encrypted instructions for Arcium MPC"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dependencies]
+arcis-imports = { version = "0.1", features = ["default"] }
+
+[features]
+default = []

@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+target/
+
+# Build outputs
+dist/
+.anchor/
+circuits/target/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.pem
+
+# Logs
+*.log
+npm-debug.log*
+
+# Test artifacts
+test-ledger/
+.test-ledger/
+
+# Anchor
+.anchor/
+
+# Rust
+Cargo.lock
+
+# Noir
+circuits/Prover.toml
+circuits/Verifier.toml

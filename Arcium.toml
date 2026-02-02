@@ -1,0 +1,31 @@
+# Phantom Streams - Arcium Configuration
+# MPC-powered private music rights verification
+
+[mxe]
+name = "phantom_streams"
+cluster = "devnet"
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+phantom_streams = "PhntmStr3amsMPCxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[programs.devnet]
+phantom_streams = "PhntmStr3amsMPCxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+# Encrypted instruction configuration
+[encrypted_ixs]
+path = "encrypted-ixs"
+output = "target/encrypted-ixs"

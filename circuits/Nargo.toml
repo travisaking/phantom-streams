@@ -1,0 +1,7 @@
+[package]
+name = "phantom_streams"
+type = "bin"
+authors = ["Travis A. King <travis@takventures.co>"]
+compiler_version = ">=0.30.0"
+
+[dependencies]
