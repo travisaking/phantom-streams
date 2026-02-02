@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("PhntmStr3amsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+declare_id!("2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X");
 
 #[program]
 pub mod phantom_streams {

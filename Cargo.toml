@@ -1,9 +1,8 @@
 [workspace]
 members = [
-    "programs/phantom-streams",
-    "programs/phantom-streams-arcium",
-    "encrypted-ixs"
+    "programs/phantom-streams"
 ]
+resolver = "2"
 
 [profile.release]
 overflow-checks = true

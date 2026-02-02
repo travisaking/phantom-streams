@@ -3,12 +3,12 @@ seeds = false
 skip-lint = false
 
 [programs.localnet]
-phantom_streams = "PhntmStr3amsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-phantom_streams_arcium = "PhntmStr3amsMPCxxxxxxxxxxxxxxxxxxxxxxxxxx"
+phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
+phantom_streams_arcium = "4Cct4GAMdz7XqtTyatz6u12upmEpepAX1nbjbnqzQAAL"
 
 [programs.devnet]
-phantom_streams = "PhntmStr3amsXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-phantom_streams_arcium = "PhntmStr3amsMPCxxxxxxxxxxxxxxxxxxxxxxxxxx"
+phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
+phantom_streams_arcium = "4Cct4GAMdz7XqtTyatz6u12upmEpepAX1nbjbnqzQAAL"
 
 [registry]
 url = "https://api.apr.dev"
@@ -22,6 +22,5 @@ test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
 
 [workspace]
 members = [
-    "programs/phantom-streams",
-    "programs/phantom-streams-arcium"
+    "programs/phantom-streams"
 ]
