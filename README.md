@@ -257,6 +257,19 @@ Labels use on-chain analytics as a weapon. Phantom Streams gives creators their 
 - Building [UNICORNY](https://unicorny.xyz) music tokenization
 - Host, The Community Builder Show
 
+## Built With
+
+This project integrates multiple privacy technologies from the Solana ecosystem:
+
+| Technology | Provider | Purpose |
+|------------|----------|---------|
+| **MPC Framework** | [Arcium](https://arcium.com) | Multi-party computation for encrypted verification |
+| **ZK Circuits** | [Noir](https://noir-lang.org) by Aztec | Zero-knowledge proof language |
+| **On-chain Verifier** | [Sunspot](https://github.com/reilabs/sunspot) | Noir verification on Solana |
+| **ZK Compression** | [Light Protocol](https://lightprotocol.com) | Scalable privacy infrastructure |
+| **RPC Infrastructure** | [Helius](https://helius.dev) | High-performance Solana RPC |
+| **Program Framework** | [Anchor](https://anchor-lang.com) | Solana smart contract development |
+
 ## License
 
 MIT

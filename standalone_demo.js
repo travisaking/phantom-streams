@@ -326,7 +326,7 @@ async function main() {
   console.log('');
   console.log('  🎵 Phantom Streams: Privacy for creators, not just traders.');
   console.log('');
-  console.log('  GitHub:  github.com/[your-repo]/phantom-streams');
+  console.log('  GitHub:  github.com/travisaking/phantom-streams');
   console.log('  Built:   Solana Privacy Hackathon 2026');
   console.log('');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
