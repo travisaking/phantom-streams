@@ -4,6 +4,24 @@
 
 Built with **Arcium MPC** + **Noir ZK** for [Solana Privacy Hack 2026](https://solana.com/privacyhack)
 
+[![Demo Video](https://img.shields.io/badge/Demo-Video-red?style=for-the-badge&logo=youtube)](YOUR_VIDEO_URL_HERE)
+[![GitHub](https://img.shields.io/badge/GitHub-travisaking%2Fphantom--streams-blue?style=for-the-badge&logo=github)](https://github.com/travisaking/phantom-streams)
+
+---
+
+## 🚀 Quick Demo (No Setup Required)
+
+```bash
+# Clone and run the demo in 30 seconds
+git clone https://github.com/travisaking/phantom-streams.git
+cd phantom-streams
+node standalone_demo.js
+```
+
+This demonstrates the full privacy flow without any dependencies.
+
+---
+
 ## Bounties Targeted
 
 | Sponsor | Prize | Integration |
