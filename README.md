@@ -22,6 +22,59 @@ This demonstrates the full privacy flow without any dependencies.
 
 ---
 
+## 🎹 Run Locally - All Available Demos
+
+**No dependencies required!** Just clone the repo and run:
+
+```bash
+# 1. Generic Privacy Demo - Shows the full ZK verification flow
+node standalone_demo.js
+
+# 2. UNICORNY Token Holder Demo - Simulated collectible token verification
+node unicorny_demo.js
+
+# 3. UNICORNY Real Wallet Demo - Uses actual Solana wallet addresses
+node unicorny_real_demo.js
+```
+
+### What Each Demo Shows:
+
+| Demo | Purpose | Best For |
+|------|---------|----------|
+| `standalone_demo.js` | Full privacy flow with generic music rights | Understanding the core protocol |
+| `unicorny_demo.js` | UNICORNY collectible token verification | Showing fan/artist relationship |
+| `unicorny_real_demo.js` | Real wallet addresses (Travis + UNICORNY Founder) | Live hackathon demo |
+
+### Sample Output (unicorny_real_demo.js):
+
+```
+🦄 UNICORNY Token Holder Verification
+     Real Wallet Demo with Phantom Streams
+
+👤 Token Holder: BSDpkAE8dCGm...7DsYQ (Travis)
+🎨 Artist Wallet: HVv5haw3eYNa...yLfS (UNICORNY Founder)
+
+✅ ZK Proof Generated: Token ownership verified privately
+✅ Nullifier Created: Prevents replay attacks
+✅ On-chain Verification: Platform confirms access rights
+
+Result: Fan can prove they hold UNICORNY collectible tokens
+        WITHOUT revealing their wallet address or other holdings
+```
+
+### Full Build (Optional - For Developers)
+
+If you want to build the Solana program:
+
+```bash
+# Install dependencies (see INSTALL.md for full setup)
+anchor build              # Builds phantom_streams.so (230KB)
+anchor test               # Runs test suite
+anchor deploy             # Deploy to devnet
+```
+
+---
+
 ## Bounties Targeted
 
 | Sponsor | Prize | Integration |
