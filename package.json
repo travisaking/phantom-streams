@@ -26,7 +26,7 @@
   "author": "Travis A. King <travis@takventures.co>",
   "license": "MIT",
   "dependencies": {
-    "@coral-xyz/anchor": "^0.29.0",
+    "@coral-xyz/anchor": "^0.32.0",
     "@solana/web3.js": "^1.87.0",
     "@solana/spl-token": "^0.3.8",
     "@arcium-hq/client": "^0.1.0"

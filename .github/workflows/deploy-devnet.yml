@@ -1,0 +1,84 @@
+name: Deploy to Devnet (CI/CD Testing Only)
+
+# ============================================================
+# ⚠️  THIS IS CI/CD FOR TESTING - NOT PRODUCTION DEPLOYMENT
+# ============================================================
+# Production infrastructure would use:
+# - AWS/GCP/Azure dedicated servers (16GB+ RAM for ZK proofs)
+# - Managed PostgreSQL (RDS/Cloud SQL)
+# - Dedicated Solana RPC (Helius/QuickNode)
+# - Load balancers, monitoring, auto-scaling
+# - Proper secrets management (AWS Secrets Manager, etc.)
+# ============================================================
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "deploy" to confirm deployment to devnet'
+        required: true
+  push:
+    tags:
+      - 'v*'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.inputs.confirm == 'deploy'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup Solana
+        run: |
+          sh -c "$(curl -sSfL https://release.anza.xyz/v1.18.0/install)"
+          echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+
+      - name: Setup Anchor
+        run: cargo install --git https://github.com/coral-xyz/anchor anchor-cli --locked
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Configure Deployer Wallet
+        env:
+          DEPLOYER_KEYPAIR: ${{ secrets.DEPLOYER_KEYPAIR }}
+        run: |
+          mkdir -p ~/.config/solana
+          echo "$DEPLOYER_KEYPAIR" > ~/.config/solana/id.json
+          solana config set --url devnet
+
+      - name: Check Balance
+        run: |
+          echo "Deployer address:"
+          solana address
+          echo "Balance:"
+          solana balance
+
+      - name: Build Program
+        run: anchor build
+
+      - name: Deploy to Devnet
+        run: |
+          anchor deploy --provider.cluster devnet
+          echo "Deployed! Program ID:"
+          solana program show --programs
+
+      - name: Record Deployment
+        run: |
+          echo "## Deployment Info" >> $GITHUB_STEP_SUMMARY
+          echo "- **Network**: Devnet" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Time**: $(date -u)" >> $GITHUB_STEP_SUMMARY

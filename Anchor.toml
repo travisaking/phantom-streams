@@ -1,26 +1,146 @@
+# ============================================================
+# PHANTOM STREAMS - Anchor Configuration
+# ============================================================
+#
+# USAGE:
+#   Local development:  anchor test (uses localnet by default)
+#   Devnet testing:     anchor test --provider.cluster devnet
+#   Mainnet deploy:     anchor deploy --provider.cluster mainnet
+#
+# SWITCH ENVIRONMENTS:
+#   Edit [provider] cluster OR use --provider.cluster flag
+#
+# ============================================================
+
 [features]
 seeds = false
 skip-lint = false
 
+# ============================================================
+# PROGRAM IDS BY NETWORK
+# ============================================================
+# Each network can have different program IDs
+# Generate new ones with: solana-keygen new -o keypair.json
+
 [programs.localnet]
 phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
-phantom_streams_arcium = "4Cct4GAMdz7XqtTyatz6u12upmEpepAX1nbjbnqzQAAL"
 
 [programs.devnet]
 phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
-phantom_streams_arcium = "4Cct4GAMdz7XqtTyatz6u12upmEpepAX1nbjbnqzQAAL"
+
+[programs.testnet]
+phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
+
+[programs.mainnet]
+phantom_streams = "2dtcKpRkN7UHADJoWeheHt3kN9T7JQntsGnCRDK9pi6X"
+
+# ============================================================
+# REGISTRY (for publishing packages)
+# ============================================================
 
 [registry]
 url = "https://api.apr.dev"
 
+# ============================================================
+# PROVIDER CONFIGURATION
+# ============================================================
+#
+# CLUSTERS:
+#   localnet  - Local validator (solana-test-validator)
+#   devnet    - https://api.devnet.solana.com
+#   testnet   - https://api.testnet.solana.com
+#   mainnet   - https://api.mainnet-beta.solana.com
+#
+# WALLET: Path to keypair file (~ expands to home directory)
+#
+# To override at runtime:
+#   anchor test --provider.cluster devnet
+#   anchor deploy --provider.cluster mainnet
+#
+# ============================================================
+
 [provider]
-cluster = "devnet"
+# DEFAULT: localnet for safe local development
+cluster = "localnet"
 wallet = "~/.config/solana/id.json"
 
+# ============================================================
+# CLUSTER URLS (Custom RPC endpoints)
+# ============================================================
+# Uncomment to use custom RPC providers like Helius, QuickNode, etc.
+
+# Windows requires 127.0.0.1 instead of 0.0.0.0
+[clusters.localnet]
+url = "http://127.0.0.1:8899"
+
+# [clusters.devnet]
+# url = "https://api.devnet.solana.com"
+# # Or use Helius: url = "https://devnet.helius-rpc.com/?api-key=YOUR_KEY"
+
+# [clusters.mainnet]
+# url = "https://api.mainnet-beta.solana.com"
+# # Or use Helius: url = "https://mainnet.helius-rpc.com/?api-key=YOUR_KEY"
+
+# ============================================================
+# TEST SCRIPTS
+# ============================================================
+
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "npx ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+# ============================================================
+# WORKSPACE MEMBERS
+# ============================================================
 
 [workspace]
 members = [
     "programs/phantom-streams"
 ]
+
+# ============================================================
+# TEST CONFIGURATION
+# ============================================================
+
+[test]
+# Automatically start local validator for tests
+startup_wait = 5000
+
+[test.validator]
+# Local validator settings
+url = "http://127.0.0.1:8899"
+
+# Pre-fund these accounts on localnet (optional)
+# [[test.validator.account]]
+# address = "BSDpkAE8dCGmG1XPT28fWV5KvB8pkC5tyKXqv1p7DsYQ"
+# filename = "tests/fixtures/travis-wallet.json"
+
+# Clone accounts from mainnet/devnet (optional)
+# [[test.validator.clone]]
+# address = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+
+# ============================================================
+# QUICK REFERENCE
+# ============================================================
+#
+# LOCAL DEVELOPMENT:
+#   Terminal 1: solana-test-validator
+#   Terminal 2: anchor test --skip-local-validator
+#
+# DEVNET TESTING:
+#   1. Get devnet SOL: solana airdrop 2 --url devnet
+#   2. Deploy: anchor deploy --provider.cluster devnet
+#   3. Test: anchor test --provider.cluster devnet --skip-local-validator
+#
+# MAINNET DEPLOYMENT:
+#   1. Ensure wallet has SOL
+#   2. anchor deploy --provider.cluster mainnet
+#
+# CHECK CURRENT CONFIG:
+#   solana config get
+#
+# SWITCH SOLANA CLI NETWORK:
+#   solana config set --url devnet
+#   solana config set --url mainnet-beta
+#   solana config set --url localhost
+#
+# ============================================================

@@ -1,0 +1,32 @@
+{
+  "name": "Rainbow Veil / Phantom Streams Development",
+  "image": "mcr.microsoft.com/devcontainers/rust:1-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "18"
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rust-lang.rust-analyzer",
+        "tamasfe.even-better-toml",
+        "serayuzgur.crates",
+        "noir-lang.vscode-noir"
+      ],
+      "settings": {
+        "rust-analyzer.cargo.features": "all"
+      }
+    }
+  },
+  "forwardPorts": [8899, 8900],
+  "remoteEnv": {
+    "ANCHOR_PROVIDER_URL": "http://127.0.0.1:8899",
+    "RUST_BACKTRACE": "1"
+  },
+  "containerEnv": {
+    "CARGO_HOME": "/usr/local/cargo",
+    "RUSTUP_HOME": "/usr/local/rustup"
+  }
+}

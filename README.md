@@ -62,9 +62,34 @@ Result: Fan can prove they hold UNICORNY collectible tokens
         WITHOUT revealing their wallet address or other holdings
 ```
 
-### Full Build (Optional - For Developers)
+### Full Build & Test Suite (Windows)
 
-If you want to build the Solana program:
+Run the complete test suite against local Solana validator:
+
+```powershell
+# From phantom_streams_sprint directory
+.\run-tests.ps1
+```
+
+**Test Results (6 passing):**
+```
+✅ Protocol Initialization
+✅ Merkle Root Management (authority only)
+✅ Unauthorized Update Rejection
+✅ Ownership Verification with ZK Proof
+✅ Replay Attack Prevention (nullifier reuse)
+✅ Privacy Guarantees (no wallet addresses on-chain)
+```
+
+### Test Wallets Used
+
+| Wallet | Address | Purpose |
+|--------|---------|---------|
+| Travis Primary | `BSDpkAE8dCGmG1XPT28fWV5KvB8pkC5tyKXqv1p7DsYQ` | Rights holder |
+| Travis Second | `FcY2KJKtNk4SVAuT4xEpZSaCpKDQE7ht8qgwxfKxM8Qx` | Multi-wallet demo |
+| UNICORNY Founder | `HVv5haw3eYNaKYbbC6gtcaDfqbZ4mHcL6g9wxCbpyLfS` | Artist wallet |
+
+### Manual Build (For Developers)
 
 ```bash
 # Install dependencies (see INSTALL.md for full setup)

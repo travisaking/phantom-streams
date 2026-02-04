@@ -20,11 +20,14 @@ const crypto = require('crypto');
 // ============================================
 
 const WALLETS = {
-  // UNICORNY Project/Founder wallet
-  UNICORNY_FOUNDER: 'HVv5haw3eYNaKYbbC6gtcaDfqbZ4mHcL6g9wxCbpyLfS',
+  // Travis - Primary wallet (Token Holder)
+  TRAVIS_PRIMARY: 'BSDpkAE8dCGmG1XPT28fWV5KvB8pkC5tyKXqv1p7DsYQ',
 
-  // Token holder wallet (Travis)
-  TRAVIS_HOLDER: 'BSDpkAE8dCGmG1XPT28fWV5KvB8pkC5tyKXqv1p7DsYQ',
+  // Travis - Second wallet (can act as UNICORNY Founder for testing)
+  TRAVIS_SECOND: 'FcY2KJKtNk4SVAuT4xEpZSaCpKDQE7ht8qgwxfKxM8Qx',
+
+  // Original UNICORNY Founder wallet (for reference)
+  UNICORNY_FOUNDER: 'HVv5haw3eYNaKYbbC6gtcaDfqbZ4mHcL6g9wxCbpyLfS',
 };
 
 // ============================================
@@ -371,7 +374,7 @@ async function main() {
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('');
   console.log(`  UNICORNY Founder: ${WALLETS.UNICORNY_FOUNDER}`);
-  console.log(`  Token Holder:     ${WALLETS.TRAVIS_HOLDER}`);
+  console.log(`  Token Holder:     ${WALLETS.TRAVIS_PRIMARY}`);
   console.log('');
 
   await sleep(500);
@@ -411,11 +414,11 @@ async function main() {
   console.log('');
 
   // Travis holds Founding Member + We Are Back collectibles
-  registry.addHolder(WALLETS.TRAVIS_HOLDER, 'UNICORNY-FOUNDING-MEMBER');
-  console.log(`  ✅ ${shortAddr(WALLETS.TRAVIS_HOLDER)} → Founding Member`);
+  registry.addHolder(WALLETS.TRAVIS_PRIMARY, 'UNICORNY-FOUNDING-MEMBER');
+  console.log(`  ✅ ${shortAddr(WALLETS.TRAVIS_PRIMARY)} → Founding Member`);
 
-  registry.addHolder(WALLETS.TRAVIS_HOLDER, 'UNICORNY-WE-ARE-BACK');
-  console.log(`  ✅ ${shortAddr(WALLETS.TRAVIS_HOLDER)} → We Are Back Collectible`);
+  registry.addHolder(WALLETS.TRAVIS_PRIMARY, 'UNICORNY-WE-ARE-BACK');
+  console.log(`  ✅ ${shortAddr(WALLETS.TRAVIS_PRIMARY)} → We Are Back Collectible`);
 
   // Add some other holders (simulated)
   const otherHolders = [
@@ -451,7 +454,7 @@ async function main() {
   const tokenToProve = 'UNICORNY-FOUNDING-MEMBER';
 
   console.log(`  👤 User: Travis`);
-  console.log(`  🔑 Wallet: ${WALLETS.TRAVIS_HOLDER}`);
+  console.log(`  🔑 Wallet: ${WALLETS.TRAVIS_PRIMARY}`);
   console.log(`  🎯 Proving ownership of: ${tokenToProve}`);
   console.log('');
 
@@ -459,7 +462,7 @@ async function main() {
   console.log('  🔐 Generating zero-knowledge proof in wallet...');
   await sleep(300);
 
-  const proofResult = verifier.generateProof(WALLETS.TRAVIS_HOLDER, tokenToProve);
+  const proofResult = verifier.generateProof(WALLETS.TRAVIS_PRIMARY, tokenToProve);
 
   if (!proofResult.success) {
     console.log(`  ❌ Error: ${proofResult.error}`);
@@ -535,7 +538,7 @@ async function main() {
   console.log('     • Timestamp: ' + new Date().toISOString());
   console.log('');
   console.log('  ❌ NOT STORED (privacy preserved):');
-  console.log(`     • Wallet: ${WALLETS.TRAVIS_HOLDER}`);
+  console.log(`     • Wallet: ${WALLETS.TRAVIS_PRIMARY}`);
   console.log('     • User identity');
   console.log('     • Other token holdings');
   console.log('     • Transaction history');
