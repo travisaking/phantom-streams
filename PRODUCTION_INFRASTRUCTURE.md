@@ -1,21 +1,34 @@
 # Production Infrastructure Guide
 
-> Rainbow Veil / Phantom Streams - Decentralized Production Deployment
+> Rainbow Veil / Phantom Streams - Honest Production Deployment
 > **First Product in UNICORNY Labs Ecosystem**
 > TAK Ventures LLC
 
 ---
 
-## Philosophy: Decentralization First
+## Philosophy: What Actually Works
 
-**Why we DON'T recommend AWS/GCP/Azure as primary:**
-- Single points of failure (us-east-1 outages affect everyone)
-- Against the ethos of Web3/Solana
-- Centralized control over your infrastructure
-- Privacy concerns with Big Tech
-- Higher costs for equivalent compute
+**The honest truth about "decentralized infrastructure":**
+- Most top Solana projects (Jupiter, Magic Eden, Backpack) use Vercel/AWS
+- 45% of Solana validator stake runs on AWS/Hetzner
+- "Decentralized cloud" (Akash, Flux) exists but isn't widely adopted yet
+- Akash is actually moving TO Solana - not used BY Solana projects
 
-**Solana's dirty secret:** ~45% of validator stake runs on AWS/Hetzner. This is a known centralization risk. We should do better.
+**Our approach:** Use what works, avoid Big 3 where possible, be honest about trade-offs.
+
+---
+
+## What Top Solana Projects Actually Use
+
+| Project | Frontend | Backend | RPC |
+|---------|----------|---------|-----|
+| Jupiter | Vercel | AWS | Helius |
+| Magic Eden | Cloudflare | AWS | Triton |
+| Backpack | Vercel | - | Helius |
+| Marinade | Vercel | AWS | Helius |
+| Tensor | Cloudflare | AWS | Helius |
+
+**Source:** Production apps, not marketing materials.
 
 ---
 
@@ -43,75 +56,16 @@
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-### UNICORNY's 4 Pillars
+### UNICORNY's 4 Pillars (From Tokenomics Spreadsheets)
 
 | Pillar | Purpose | Products | Market Size |
 |--------|---------|----------|-------------|
-| **ENERGY** | Fuel for transactions | Token utility, uploads, mints | $5B (platform fees) |
-| **CAPITAL** | Investment & funding | Royalties, advances, fan investment | $15B (music financing) |
-| **INTELLIGENCE** | Data & analytics | Radar, Rainbow Veil, AI insights | $3B (music data) |
-| **LABOR** | Payments to contributors | Producer/engineer compensation | $8B (session work) |
+| **ENERGY** | Fuel for transactions | Token utility, uploads, mints | $5B |
+| **CAPITAL** | Investment & funding | Royalties, advances, fan investment | $15B |
+| **INTELLIGENCE** | Data & analytics | Radar, Rainbow Veil, AI insights | $3B |
+| **LABOR** | Payments to contributors | Producer/engineer compensation | $8B |
 
-### UNICORNY Labs Products
-
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    UNICORNY LABS PRODUCT SUITE                      │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│   🌈 RAINBOW VEIL (This Project) - LAUNCHING FIRST                 │
-│   ├── Privacy-preserving ownership verification                    │
-│   ├── ZK proofs for token gating                                   │
-│   ├── Pillar: Intelligence                                         │
-│   └── Revenue: $0.01-0.05 per verification                         │
-│                                                                     │
-│   🔮 UNICORNY RADAR (solana-exploding-v2)                          │
-│   ├── Cross-platform mention tracking                              │
-│   ├── PES (Promotional Effort Score)                               │
-│   ├── Pillar: Intelligence                                         │
-│   └── Revenue: $15-50/month subscription                           │
-│                                                                     │
-│   🛡️ HERD PROTECTION (scamfi-protocol)                             │
-│   ├── Transfer hooks for bad actor detection                       │
-│   ├── Automated seizure & redistribution                           │
-│   ├── Pillar: Security (cross-pillar)                              │
-│   └── Revenue: 0.1% of protected token volume                      │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Total Addressable Market (TAM) Analysis
-
-### Market Sizing
-
-```
-GLOBAL MUSIC INDUSTRY
-├── Total Market: $100B
-│
-├── TAM (Total Addressable Market)
-│   └── All music transactions that could use blockchain: $50B
-│       ├── Streaming royalties: $20B
-│       ├── Sync licensing: $5B
-│       ├── Live/merch: $15B
-│       └── Fan engagement: $10B
-│
-├── SAM (Serviceable Addressable Market)
-│   └── Independent artists + privacy-conscious users: $15B
-│       ├── Indie artist share: $8B (60% of artists, 15% of revenue)
-│       ├── Web3 music market: $2B (growing 40% YoY)
-│       └── Token-gated content: $5B (emerging)
-│
-└── SOM (Serviceable Obtainable Market) - 5 Year Target
-    └── Realistic capture with 4 pillars: $500M-2B
-        ├── Protocol fees (0.5-1%): $50-200M
-        ├── Subscriptions (Radar): $30-100M
-        ├── Verification fees (Veil): $10-50M
-        └── Protection fees (Herd): $20-80M
-```
-
-### Revenue Projections by Product
+### Revenue Projections (All 3 Products)
 
 | Year | Rainbow Veil | UNICORNY Radar | Herd Protection | Total |
 |------|--------------|----------------|-----------------|-------|
@@ -121,428 +75,322 @@ GLOBAL MUSIC INDUSTRY
 | 4 | $25M | $50M | $12.5M | $87.5M |
 | 5 | $100M | $200M | $50M | $350M |
 
-**Assumptions:**
-- 40% YoY growth in Web3 music
-- 10% market share of Solana music ecosystem by Year 5
-- Token utility increases demand across all products
-
-### Rainbow Veil Specific Economics
-
-```
-RAINBOW VEIL UNIT ECONOMICS
-
-Per Verification:
-├── Revenue: $0.01-0.05 (paid in UNICORNY token)
-├── Compute cost: $0.002 (ZK proof generation)
-├── RPC cost: $0.0001 (Solana transaction)
-└── Gross margin: 80-95%
-
-At Scale (1M verifications/month):
-├── Revenue: $10K-50K/month
-├── Costs: $2K-5K/month
-├── Gross profit: $8K-45K/month
-└── Annual: $100K-540K
-
-At Full Adoption (100M verifications/month):
-├── Revenue: $1M-5M/month
-├── Costs: $100K-200K/month
-├── Gross profit: $900K-4.8M/month
-└── Annual: $10M-58M
-```
-
 ---
 
-## Decentralized Production Architecture (PRIMARY RECOMMENDATION)
+## Recommended Production Stack
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│           DECENTRALIZED INFRASTRUCTURE (RECOMMENDED)                │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  FRONTEND (Censorship-Resistant)                                   │
-│  ┌──────────────┐      ┌──────────────┐                           │
-│  │    Fleek     │  OR  │   Arweave    │                           │
-│  │  (IPFS CDN)  │      │  (Permanent) │                           │
-│  └──────────────┘      └──────────────┘                           │
-│          │                    │                                    │
-│          └────────────────────┘                                    │
-│                    │                                               │
-│                    ▼                                               │
-│  COMPUTE (Decentralized)                                          │
-│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐    │
-│  │    Akash     │      │    Flux      │      │   Spheron    │    │
-│  │   Network    │  OR  │   Network    │  OR  │   Network    │    │
-│  │ (Pay in AKT) │      │ (Pay in FLUX)│      │ (Compute)    │    │
-│  └──────────────┘      └──────────────┘      └──────────────┘    │
-│          │                    │                     │             │
-│          └────────────────────┼─────────────────────┘             │
-│                               │                                   │
-│                               ▼                                   │
-│  ┌─────────────────────────────────────────────────────────────┐ │
-│  │                    SERVICE LAYER                             │ │
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐   │ │
-│  │  │ ZK Prover│  │ Backend  │  │ Indexer  │  │ API      │   │ │
-│  │  │ Service  │  │ API      │  │ Service  │  │ Gateway  │   │ │
-│  │  │ (16GB)   │  │ (2GB)    │  │ (1GB)    │  │          │   │ │
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘   │ │
-│  └─────────────────────────────────────────────────────────────┘ │
-│                               │                                   │
-│          ┌────────────────────┼────────────────────┐             │
-│          │                    │                    │             │
-│          ▼                    ▼                    ▼             │
-│  STORAGE (Decentralized)                                         │
-│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐   │
-│  │   Arweave    │      │   Ceramic    │      │   WeaveDB    │   │
-│  │  (Permanent  │      │  (Mutable    │      │  (Queryable  │   │
-│  │   Storage)   │      │   Data)      │      │   on Arweave)│   │
-│  └──────────────┘      └──────────────┘      └──────────────┘   │
-│                               │                                   │
-│                               ▼                                   │
-│  BLOCKCHAIN (Solana)                                             │
-│  ┌──────────────────────────────────────────────────────────────┐│
-│  │  RPC Providers (Multiple for Redundancy)                     ││
-│  │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    ││
-│  │  │  Helius  │  │ GenesysGo│  │  Triton  │  │Self-hosted│    ││
-│  │  │ (Primary)│  │ (Backup) │  │ (Backup) │  │ (Backup)  │    ││
-│  │  └──────────┘  └──────────┘  └──────────┘  └──────────┘    ││
-│  └──────────────────────────────────────────────────────────────┘│
-│                                                                   │
-└───────────────────────────────────────────────────────────────────┘
-```
+### Option A: Pragmatic (RECOMMENDED)
 
----
-
-## Decentralized Provider Comparison
-
-### Compute (ZK Prover)
-
-| Provider | Type | 4CPU/16GB Cost | Decentralized? |
-|----------|------|----------------|----------------|
-| **Akash Network** | Decentralized marketplace | ~$50/month | ✅ Yes |
-| **Flux** | Decentralized cloud | ~$60/month | ✅ Yes |
-| **Spheron** | Decentralized compute | ~$55/month | ✅ Yes |
-| AWS EC2 | Centralized | ~$140/month | ❌ No |
-| GCP | Centralized | ~$120/month | ❌ No |
-
-**Winner: Akash Network** - 60% cheaper, truly decentralized, pay in crypto
-
-### Frontend Hosting
-
-| Provider | Type | Cost | Decentralized? |
-|----------|------|------|----------------|
-| **Fleek** | IPFS + CDN | Free-$20/month | ✅ Yes |
-| **Arweave** | Permanent storage | ~$5 one-time | ✅ Yes |
-| **4EVERLAND** | IPFS hosting | Free tier | ✅ Yes |
-| Vercel | Centralized | Free-$20/month | ❌ No |
-| Netlify | Centralized | Free-$19/month | ❌ No |
-
-**Winner: Fleek** - IPFS-based, global CDN, easy deployment
-
-### Database
-
-| Provider | Type | Cost | Decentralized? |
-|----------|------|------|----------------|
-| **Ceramic Network** | Decentralized data | Free (self-host) | ✅ Yes |
-| **WeaveDB** | Arweave-based DB | ~$10/month | ✅ Yes |
-| **Tableland** | SQL on-chain | Gas costs | ✅ Yes |
-| PostgreSQL on Akash | Self-hosted | ~$20/month | ✅ Yes |
-| AWS RDS | Centralized | ~$30/month | ❌ No |
-
-**Winner: Ceramic + WeaveDB** - Decentralized, queryable, permanent
-
-### Storage
-
-| Provider | Type | Cost | Decentralized? |
-|----------|------|------|----------------|
-| **Arweave** | Permanent | ~$5/GB one-time | ✅ Yes |
-| **Filecoin/IPFS** | Distributed | ~$0.01/GB/month | ✅ Yes |
-| **Storj** | Distributed | $4/TB/month | ✅ Yes |
-| AWS S3 | Centralized | $23/TB/month | ❌ No |
-
-**Winner: Arweave** - Pay once, store forever, perfect for proofs
-
----
-
-## Recommended Stack (Decentralized)
-
-### Option A: Full Decentralization (RECOMMENDED)
+What we actually recommend for a production app that needs to work:
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│  FULLY DECENTRALIZED STACK                                 │
+│  PRAGMATIC STACK (What Actually Works)                     │
 ├────────────────────────────────────────────────────────────┤
 │                                                            │
-│  Frontend:    Fleek (IPFS)                    FREE        │
-│  Compute:     Akash Network (4CPU/16GB)       $50/month   │
-│  Database:    Ceramic Network                 FREE        │
-│  Storage:     Arweave (proofs)                $5 one-time │
-│  RPC:         Helius + GenesysGo backup       $49/month   │
-│  ──────────────────────────────────────────────────────── │
-│  TOTAL:                                       ~$99/month  │
+│  Frontend:     Cloudflare Pages            FREE           │
+│               (Global CDN, fast, not AWS)                 │
 │                                                            │
-│  ✅ No single point of failure                            │
+│  Backend API:  Railway                     $20/month      │
+│               (Easy deployment, good DX)                  │
+│                                                            │
+│  ZK Prover:    Hetzner Dedicated           $50/month      │
+│               (Bare metal, not Big 3, EU)                 │
+│               AX42 - AMD Ryzen, 64GB RAM                  │
+│                                                            │
+│  RPC:          Helius                      $49/month      │
+│               (Solana-native, Mert's company)             │
+│               + Triton backup              $29/month      │
+│                                                            │
+│  Storage:      Arweave                     $5 one-time    │
+│               (Permanent, for proof artifacts)            │
+│                                                            │
+│  Database:     Railway Postgres            $10/month      │
+│               OR PlanetScale              $29/month       │
+│                                                            │
+│  ──────────────────────────────────────────────────────── │
+│  TOTAL:                                    ~$160/month    │
+│                                                            │
+│  ✅ Reliable, proven infrastructure                       │
+│  ✅ Avoids Big 3 (AWS/GCP/Azure) where possible          │
+│  ✅ Good developer experience                             │
+│  ✅ Reasonable cost                                       │
+│                                                            │
+└────────────────────────────────────────────────────────────┘
+```
+
+### Why These Choices?
+
+| Component | Choice | Why Not AWS? | Why Not "Decentralized"? |
+|-----------|--------|--------------|--------------------------|
+| Frontend | Cloudflare | Not AWS, faster | Fleek has less adoption |
+| Backend | Railway | Simpler than ECS | Akash harder to debug |
+| Compute | Hetzner | 50% cheaper, EU | Akash not proven for ZK |
+| RPC | Helius | Solana-native | N/A - Helius is the answer |
+| Storage | Arweave | N/A | Arweave IS decentralized ✅ |
+| Database | Railway PG | Simpler than RDS | Ceramic less mature |
+
+### Option B: Decentralized (Aspirational)
+
+If you want to go full decentralized (understanding the trade-offs):
+
+```
+┌────────────────────────────────────────────────────────────┐
+│  DECENTRALIZED STACK (Aspirational)                        │
+├────────────────────────────────────────────────────────────┤
+│                                                            │
+│  Frontend:     4EVERLAND or Spheron        FREE-$20       │
+│               (IPFS-based)                                │
+│                                                            │
+│  Backend:      Akash Network               ~$50/month     │
+│               (Decentralized compute)                     │
+│                                                            │
+│  ZK Prover:    Akash Network               ~$70/month     │
+│               (16GB+ instance)                            │
+│                                                            │
+│  RPC:          Helius + self-hosted        $49 + $50      │
+│               (Run your own RPC on Akash)                 │
+│                                                            │
+│  Storage:      Arweave                     $5 one-time    │
+│                                                            │
+│  Database:     WeaveDB or Ceramic          FREE-$20       │
+│                                                            │
+│  ──────────────────────────────────────────────────────── │
+│  TOTAL:                                    ~$220/month    │
+│                                                            │
+│  ✅ Truly decentralized                                   │
 │  ✅ Censorship-resistant                                  │
-│  ✅ 30% cheaper than centralized                          │
-│  ✅ Aligned with Web3 ethos                               │
+│  ⚠️  Harder to debug                                      │
+│  ⚠️  Less reliable (newer infrastructure)                 │
+│  ⚠️  Fewer developers know how to use it                  │
 │                                                            │
 └────────────────────────────────────────────────────────────┘
 ```
 
-### Option B: Hybrid (Decentralized Compute, Some Centralized)
+### Option C: Centralized (Last Resort)
+
+If you absolutely need AWS (enterprise requirements, existing contracts):
 
 ```
 ┌────────────────────────────────────────────────────────────┐
-│  HYBRID STACK (Pragmatic)                                  │
+│  CENTRALIZED STACK (AWS - Last Resort)                     │
 ├────────────────────────────────────────────────────────────┤
 │                                                            │
-│  Frontend:    Vercel (easy CI/CD)             FREE        │
-│  Compute:     Akash Network                   $50/month   │
-│  Database:    Railway Postgres                $10/month   │
-│  Storage:     Arweave                         $5 one-time │
-│  RPC:         Helius                          $49/month   │
+│  Frontend:     Vercel                      FREE-$20       │
+│  Backend:      AWS ECS Fargate             $40/month      │
+│  ZK Prover:    AWS EC2 m5.xlarge           $140/month     │
+│  RPC:          Helius                      $49/month      │
+│  Storage:      AWS S3 + Arweave            $10/month      │
+│  Database:     AWS RDS PostgreSQL          $30/month      │
 │  ──────────────────────────────────────────────────────── │
-│  TOTAL:                                       ~$109/month │
+│  TOTAL:                                    ~$290/month    │
 │                                                            │
-│  ✅ Decentralized compute (most critical)                 │
-│  ✅ Easy development workflow                             │
-│  ⚠️  Some centralized dependencies                        │
-│                                                            │
-└────────────────────────────────────────────────────────────┘
-```
-
-### Option C: Centralized (NOT RECOMMENDED - Only if Necessary)
-
-```
-┌────────────────────────────────────────────────────────────┐
-│  CENTRALIZED STACK (Last Resort)                           │
-├────────────────────────────────────────────────────────────┤
-│                                                            │
-│  Frontend:    Vercel                          FREE        │
-│  Compute:     AWS EC2 m5.xlarge               $140/month  │
-│  Database:    AWS RDS PostgreSQL              $30/month   │
-│  Storage:     AWS S3                          $5/month    │
-│  RPC:         Helius                          $49/month   │
-│  ──────────────────────────────────────────────────────── │
-│  TOTAL:                                       ~$224/month │
-│                                                            │
-│  ❌ Single point of failure (AWS us-east-1)               │
+│  ❌ Single point of failure (us-east-1)                   │
 │  ❌ Against Web3 ethos                                    │
-│  ❌ 2x more expensive                                     │
-│  ❌ Privacy concerns                                      │
+│  ❌ Most expensive option                                 │
+│  ❌ Vendor lock-in                                        │
 │                                                            │
 └────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Akash Network Deployment
+## Service Details
 
-### deploy.yaml (Akash SDL)
+### Helius (RPC) - The Standard
 
-```yaml
+[Helius](https://www.helius.dev) is the go-to for Solana:
+- Founded by Mert, deeply integrated with Solana ecosystem
+- Powers Backpack, Tensor, and many top apps
+- Enhanced APIs (NFT, DAS, webhooks)
+- ~140ms latency, MEV protection
+
+| Plan | Cost | Requests |
+|------|------|----------|
+| Free | $0 | 100K/month |
+| Developer | $49/month | 2M/month |
+| Business | $199/month | 10M/month |
+| Enterprise | Custom | Unlimited |
+
+### Hetzner (Compute) - The Quiet MVP
+
+Why many Solana validators use Hetzner:
+- 50-70% cheaper than AWS
+- German company (GDPR compliant)
+- Bare metal = better for ZK proofs
+- Not Big 3 = diversification
+
+| Server | Specs | Cost |
+|--------|-------|------|
+| AX42 | Ryzen 7, 64GB RAM, 1TB NVMe | €49/month |
+| AX52 | Ryzen 9, 128GB RAM, 2TB NVMe | €89/month |
+| AX102 | EPYC, 256GB RAM, 2x2TB NVMe | €179/month |
+
+### Cloudflare Pages (Frontend)
+
+Why Cloudflare over Vercel:
+- Not AWS (Vercel uses AWS under the hood)
+- Faster global CDN
+- Free tier is generous
+- Better security (WAF included)
+
+### Arweave (Storage) - Actually Decentralized
+
+One thing the industry got right:
+- Pay once, store forever
+- ~$5/GB (one-time)
+- Perfect for ZK proof artifacts, NFT metadata
+- Used by Metaplex, Shadow Drive
+
 ---
-version: "2.0"
 
-services:
-  rainbow-veil-prover:
-    image: unicornylabs/rainbow-veil-prover:latest
-    expose:
-      - port: 3001
-        as: 80
-        to:
-          - global: true
-    env:
-      - SOLANA_RPC=https://mainnet.helius-rpc.com/?api-key=xxx
-      - NODE_ENV=production
-    resources:
-      cpu:
-        units: 4
-      memory:
-        size: 16Gi
-      storage:
-        size: 20Gi
+## Scaling Strategy
 
-  rainbow-veil-api:
-    image: unicornylabs/rainbow-veil-api:latest
-    expose:
-      - port: 3000
-        as: 443
-        to:
-          - global: true
-    env:
-      - DATABASE_URL=xxx
-      - PROVER_URL=http://rainbow-veil-prover
-    resources:
-      cpu:
-        units: 2
-      memory:
-        size: 4Gi
-      storage:
-        size: 10Gi
-
-profiles:
-  compute:
-    rainbow-veil-prover:
-      resources:
-        cpu:
-          units: 4
-        memory:
-          size: 16Gi
-        storage:
-          size: 20Gi
-    rainbow-veil-api:
-      resources:
-        cpu:
-          units: 2
-        memory:
-          size: 4Gi
-        storage:
-          size: 10Gi
-
-  placement:
-    akash:
-      attributes:
-        host: akash
-      signedBy:
-        anyOf:
-          - akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63
-      pricing:
-        rainbow-veil-prover:
-          denom: uakt
-          amount: 5000  # ~$50/month
-        rainbow-veil-api:
-          denom: uakt
-          amount: 2000  # ~$20/month
-
-deployment:
-  rainbow-veil-prover:
-    akash:
-      profile: rainbow-veil-prover
-      count: 1
-  rainbow-veil-api:
-    akash:
-      profile: rainbow-veil-api
-      count: 1
+### Phase 1: MVP (0-1K users)
+```
+Cloudflare Pages      FREE
+Railway API           $20/month
+Railway Postgres      $10/month
+Helius Free           FREE
+Arweave              $5 one-time
+─────────────────────────────────
+Total:               $30/month
 ```
 
-### Deployment Commands
+### Phase 2: Growth (1K-10K users)
+```
+Cloudflare Pages      FREE
+Railway API (scaled)  $50/month
+Hetzner AX42         €49/month
+Railway Postgres      $29/month
+Helius Developer     $49/month
+─────────────────────────────────
+Total:               ~$180/month
+```
 
-```bash
-# Install Akash CLI
-curl -sSfL https://raw.githubusercontent.com/akash-network/node/master/install.sh | sh
+### Phase 3: Scale (10K-100K users)
+```
+Cloudflare Pro        $20/month
+Multiple Railway      $150/month
+Hetzner AX102        €179/month
+PlanetScale          $79/month
+Helius Business      $199/month
+Triton backup        $99/month
+─────────────────────────────────
+Total:               ~$750/month
+```
 
-# Fund wallet with AKT
-akash tx bank send <faucet> <your-wallet> 10000000uakt
-
-# Deploy
-akash tx deployment create deploy.yaml --from <wallet> --node https://rpc.akash.network:443
-
-# Get lease
-akash query market lease list --owner <your-wallet>
-
-# Access logs
-akash provider lease-logs --from <wallet> --provider <provider-address>
+### Phase 4: Mass Adoption (100K+ users)
+```
+Cloudflare Enterprise Custom
+Kubernetes cluster   $2000/month
+Multiple Hetzner     $500/month
+PlanetScale scale    $500/month
+Helius Enterprise    Custom
+Multiple RPC backup  $500/month
+─────────────────────────────────
+Total:               ~$4000+/month
 ```
 
 ---
 
-## Multi-Product Infrastructure (All 4 Pillars)
+## Security
 
-### Full UNICORNY Ecosystem Deployment
-
+### Secrets Management
 ```
-┌─────────────────────────────────────────────────────────────────────┐
-│              UNICORNY LABS FULL ECOSYSTEM                           │
-├─────────────────────────────────────────────────────────────────────┤
-│                                                                     │
-│  INTELLIGENCE PILLAR                                               │
-│  ├── 🌈 Rainbow Veil (Privacy Verification)                        │
-│  │   ├── Akash: ZK Prover (16GB)              $50/month            │
-│  │   └── Akash: API (4GB)                     $20/month            │
-│  │                                                                  │
-│  └── 🔮 UNICORNY Radar (Analytics)                                 │
-│      ├── Akash: Scraper Cluster (8GB x 3)     $45/month            │
-│      └── Akash: API (4GB)                     $20/month            │
-│                                                                     │
-│  SECURITY PILLAR                                                   │
-│  └── 🛡️ Herd Protection (Transfer Hooks)                          │
-│      ├── Akash: Risk API (4GB)                $20/month            │
-│      └── Indexer (2GB)                        $10/month            │
-│                                                                     │
-│  SHARED INFRASTRUCTURE                                             │
-│  ├── Ceramic Network (Decentralized DB)       FREE                 │
-│  ├── Arweave (Permanent Storage)              $50 one-time         │
-│  ├── Helius RPC (Primary)                     $199/month           │
-│  ├── GenesysGo RPC (Backup)                   $49/month            │
-│  └── Fleek (Frontend CDN)                     $20/month            │
-│                                                                     │
-│  ─────────────────────────────────────────────────────────────────│
-│  TOTAL MONTHLY (All Products):                ~$433/month          │
-│  At Scale (10x):                              ~$2,000/month        │
-│                                                                     │
-└─────────────────────────────────────────────────────────────────────┘
+✅ DO: Railway encrypted env vars
+✅ DO: Doppler (secrets management)
+✅ DO: 1Password for teams
+❌ DON'T: .env files in repo
+❌ DON'T: Hardcoded keys
+```
+
+### Wallet Security
+```
+Deployer:    Multi-sig (Squads Protocol)
+Fee Payer:   Hot wallet, daily limits, auto-refill
+Treasury:    Cold storage, 3-of-5 multi-sig
+Upgrade:     Multi-sig with 24h timelock
+```
+
+### RPC Redundancy
+```
+Primary:     Helius (99.9% uptime)
+Secondary:   Triton (auto-failover)
+Tertiary:    QuickNode (backup)
+Monitor:     Custom health checks every 30s
 ```
 
 ---
 
 ## 5-Year Infrastructure Scaling
 
-| Year | Users | Verifications/mo | Infra Cost | Revenue | Profit |
+| Year | Users | Verifications/mo | Infra Cost | Revenue | Margin |
 |------|-------|------------------|------------|---------|--------|
-| 1 | 1K | 10K | $500/mo | $2K/mo | $1.5K/mo |
-| 2 | 10K | 100K | $1.5K/mo | $20K/mo | $18.5K/mo |
-| 3 | 100K | 1M | $5K/mo | $200K/mo | $195K/mo |
-| 4 | 500K | 5M | $15K/mo | $1M/mo | $985K/mo |
-| 5 | 1M+ | 10M+ | $30K/mo | $2M+/mo | $1.97M+/mo |
-
-**Key insight:** Decentralized infrastructure scales linearly while maintaining 95%+ gross margins.
+| 1 | 1K | 10K | $360/yr | $24K/yr | 98% |
+| 2 | 10K | 100K | $2.2K/yr | $240K/yr | 99% |
+| 3 | 100K | 1M | $9K/yr | $2.4M/yr | 99.6% |
+| 4 | 500K | 5M | $30K/yr | $12M/yr | 99.8% |
+| 5 | 1M+ | 10M+ | $50K/yr | $24M+/yr | 99.8% |
 
 ---
 
-## Security (Decentralized Context)
+## The Honest Trade-off Matrix
 
-### Secrets Management
-```
-❌ DON'T: AWS Secrets Manager (centralized)
-✅ DO: Akash encrypted env vars + multi-sig wallets
-✅ DO: Lit Protocol for decentralized access control
-```
+| Priority | Centralized | Pragmatic | Decentralized |
+|----------|-------------|-----------|---------------|
+| **Reliability** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Cost** | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **DX** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| **Decentralization** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Censorship Resistance** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| **Web3 Ethos** | ⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-### Multi-Sig Wallets
-```
-Deployment authority: 3-of-5 multi-sig (Squads Protocol)
-Fee payer: Hot wallet with daily limits
-Treasury: 5-of-7 multi-sig with timelock
-```
+**Our recommendation:** Start with **Pragmatic** stack. Move components to decentralized as those options mature.
 
-### RPC Redundancy
-```
-Primary:   Helius (99.9% uptime)
-Secondary: GenesysGo (auto-failover)
-Tertiary:  Self-hosted on Akash (backup)
+---
+
+## Quick Start
+
+```bash
+# 1. Deploy frontend to Cloudflare Pages
+npx wrangler pages deploy ./dist
+
+# 2. Deploy API to Railway
+railway up
+
+# 3. Set up Helius
+# Get API key from https://helius.dev
+
+# 4. Deploy to Hetzner (for ZK prover)
+ssh root@your-hetzner-server
+docker-compose up -d
+
+# 5. Store proofs on Arweave
+npx arweave deploy proof.json
 ```
 
 ---
 
-## Conclusion: Why Decentralized
+## Conclusion
 
-| Aspect | Centralized (AWS) | Decentralized (Akash) |
-|--------|-------------------|----------------------|
-| Cost | $224/month | $99/month |
-| Uptime risk | us-east-1 outages | Distributed globally |
-| Censorship | Can be shut down | Censorship-resistant |
-| Privacy | AWS sees all data | No central observer |
-| Ethos | Against Web3 values | Aligned with mission |
-| Scaling | Expensive | Linear cost |
+**Rainbow Veil is the first product in the UNICORNY ecosystem.**
 
-**Rainbow Veil is the first product in the UNICORNY ecosystem. Building on decentralized infrastructure from day one sets the standard for all future products.**
+We're being honest about infrastructure:
+- Use what works (Cloudflare, Hetzner, Helius)
+- Avoid Big 3 where practical (no AWS/GCP/Azure)
+- Use actually decentralized options where mature (Arweave)
+- Plan to migrate as decentralized infra matures
+
+The goal is a working product that serves users, not ideological purity that breaks in production.
 
 ---
 
-## Next Steps
+## Sources
 
-1. **Week 1:** Deploy Rainbow Veil on Akash (testnet)
-2. **Week 2:** Add Ceramic for user data
-3. **Week 3:** Frontend on Fleek/IPFS
-4. **Week 4:** Full integration test
-5. **Month 2:** Mainnet launch with all products
+- [Helius - Solana's Leading RPC](https://www.helius.dev)
+- [Hetzner Dedicated Servers](https://www.hetzner.com/dedicated-rootserver)
+- [Cloudflare Pages](https://pages.cloudflare.com)
+- [Railway](https://railway.app)
+- [Arweave](https://arweave.org)
+- [Solana Ecosystem Report H1 2025](https://www.helius.dev/blog/solana-ecosystem-report-h1-2025)
